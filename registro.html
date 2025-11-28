@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Yovavel Spa</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
             height: 100vh;
             overflow: hidden;
             display: flex;
@@ -35,12 +29,12 @@
         .register-section {
             width: 25%;
             height: 100vh;
-            background: linear-gradient(135deg, #8b7355 0%, #6d5d4b 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: -5px 0 20px var(--shadow-dark);
             overflow-y: auto;
         }
 
@@ -54,95 +48,25 @@
 
         .register-container h2 {
             text-align: center;
-            color: #6d5d4b;
+            color: var(--text-color);
             margin-bottom: 30px;
             font-weight: 300;
             font-size: 1.8rem;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #6d5d4b;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d4c4b0;
-            border-radius: 5px;
-            font-size: 14px;
-            background: white;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #8b7355;
-        }
-
-        .form-group input.error {
-            border-color: #c33;
-        }
-
-        .form-group small {
-            display: block;
-            margin-top: 5px;
-            color: #c33;
-            font-size: 12px;
-        }
-
         .btn {
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #8b7355 0%, #6d5d4b 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: linear-gradient(135deg, #9d8364 0%, #7d6d5b 100%);
-        }
-
-        .message {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 14px;
-            display: none;
-        }
-
-        .message.error {
-            background-color: #fee;
-            color: #c33;
-            border: 1px solid #fcc;
-        }
-
-        .message.success {
-            background-color: #efe;
-            color: #3c3;
-            border: 1px solid #cfc;
         }
 
         .login-link {
             text-align: center;
             margin-top: 20px;
-            color: #6d5d4b;
+            color: var(--text-color);
             font-size: 14px;
         }
 
         .login-link a {
-            color: #8b7355;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
         }
@@ -153,12 +77,27 @@
 
         .password-requirements {
             font-size: 12px;
-            color: #6d5d4b;
+            color: var(--text-color);
             margin-top: 5px;
             line-height: 1.4;
         }
 
-        /* Responsive */
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .back-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -183,7 +122,7 @@
 </head>
 <body>
     <div class="image-section">
-        <img src="images/SpaLogin.jpg" alt="Yovavel Spa">
+        <img src="images/SpaLogin1.jpg" alt="Yovavel Spa">
     </div>
     
     <div class="register-section">
@@ -213,11 +152,14 @@
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                     <small id="confirmPasswordError"></small>
                 </div>
-                <button type="submit" class="btn">Registrarse</button>
+                <button type="submit" class="btn btn-gradient">Registrarse</button>
                 <div id="message" class="message"></div>
             </form>
             <div class="login-link">
                 ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+            </div>
+            <div class="back-link">
+                <a href="index.html">← Volver al inicio</a>
             </div>
         </div>
     </div>
