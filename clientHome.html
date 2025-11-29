@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientHome</title>
+
+    <style>
+        :root {
+            --fondo-suave: #f5efe6;
+            --dorado: #d8b98a;
+            --marron-oscuro: #5a4637;
+            --blanco-calido: #fffdf8;
+            --sombra-suave: rgba(0,0,0,0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: var(--fondo-suave);
+            color: var(--marron-oscuro);
+        }
+
+        .Bsuperior {
+            position: relative;
+            width: 100%;
+            height: 95vh;
+            overflow: hidden;
+        }
+        .Bsuperior img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(80%);
+        }
+
+        .Titulo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            letter-spacing: 8px;
+            text-shadow: 0 4px 40px rgba(0,0,0,0.7);
+        }
+
+        .contenido {
+            padding: 50px 25px;
+            text-align: center;
+        }
+
+        .Ctitulo {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--marron-oscuro);
+            font-weight: 400;
+        }
+
+        .opciones {
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tarjetas {
+            background: var(--blanco-calido);
+            width: 280px;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px var(--sombra-suave);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tarjetas:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px var(--sombra-suave);
+        }
+
+        .tarjetas h3 {
+            color: var(--marron-oscuro);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .tarjetas p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .btn1 {
+            padding: 12px 32px;
+            background: var(--dorado);
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s ease;
+        }
+
+        .btn1:hover {
+            background: #caa776;
+        }
+
+        .cerrarSesion {
+            margin-top: 40px;
+        }
+
+        .btnCerrarSesion {
+            background: transparent;
+            border: 2px solid var(--marron-oscuro);
+            padding: 10px 35px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            color: var(--marron-oscuro);
+            transition: 0.2s ease;
+        }
+
+        .btnCerrarSesion:hover {
+            background: var(--marron-oscuro);
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="Bsuperior">
+        <img src="images/Spaindex.jpg" alt="SpaYovavel">
+        <div class="Titulo">YOVAVEL</div>
+    </div>
+
+    <div class="contenido">
+        <h2 class="Ctitulo">¿Buscando Relax?</h2>
+
+        <div class="opciones">
+
+            <div class="tarjetas">
+                <h3>Agendar Cita</h3>
+                <p>Agenda una sesión de relajación con los mejores profesionales</p>
+                <a href="agendar.html" class="btn1">Ir</a>
+            </div>
+
+            <div class="tarjetas">
+                <h3>Productos</h3>
+                <p>Encuentra productos premium para el cuidado de tu bienestar</p>
+                <a href="productos.html" class="btn1">Ver</a>
+            </div>
+
+            <div class="tarjetas">
+                <h3>Historial</h3>
+                <p>Revisa tus citas realizadas y tus movimientos anteriores</p>
+                <a href="cliente-historial.html" class="btn1">Ver</a>
+            </div>
+
+        </div>
+
+        <div class="cerrarSesion">
+            <button class="btnCerrarSesion" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = "../index.html";
+        }
+    </script>
+</body>
+</html>
