@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yovavel - Ventas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+
+    <style>
+       * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        }
+
+        body {
+        background: #f1f1f1;
+        color: #7A6655; 
+        }
+
+        #navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background: #E3D5C8; 
+        border-bottom: 2px solid #CBB8A4;
+        }
+
+        #tittle {
+        font-size: 30px;
+        font-weight: 600;
+        color: #7A6655;
+        }
+
+        #profile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        }
+
+        #profile p {
+        font-size: 15px;
+        color: #7A6655;
+        }
+
+        #profile img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        }
+
+        /* FORM CONTAINER */
+        .container-table {
+        width: 85%;
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+        }
+
+        form {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        }
+
+        .userData, .producto {
+        background-color: #FFFFFF;    
+        padding: 18px;
+        border-radius: 14px;
+        border: 1px solid #E3D5C8;    
+        
+        }
+
+        .userData {
+        width: 50%;
+        }
+
+        .producto {
+        width: 50%;
+        }
+
+        h3, h4 {
+        margin-bottom: 12px;
+        color: #7A6655;
+        }
+
+        .form-group, .prod-group {
+        margin-bottom: 12px;
+        display: flex;
+        flex-direction: column;
+        }
+
+        label {
+        margin-bottom: 4px;
+        font-size: 14px;
+        color: #7A6655;
+        }
+
+        input {
+        padding: 9px;
+        font-size: 14px;
+        border: 1px solid #CBB8A4;
+        border-radius: 8px;
+        background-color: #F6F1EB;
+        color: #7A6655;
+        }
+
+        button {
+        padding: 8px 14px;
+        margin-right: 5px;
+        border: none;
+        background-color: #CBB8A4;
+        color: #fff;
+        font-size: 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        }
+
+        button:hover {
+        background-color: #A8927A;
+        }
+
+        table {
+        width: 85%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #FFFFFF;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #E3D5C8;
+        }
+
+        th, td {
+        padding: 10px;
+        font-size: 14px;
+        border-bottom: 1px solid #E3D5C8;
+        color: #7A6655;
+        }
+
+        th {
+        background-color: #E3D5C8; 
+        color: #7A6655;
+        }
+
+        tbody tr:hover {
+        background-color: #F6F1EB;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar"> 
+        <h1 id="tittle">Registro de ventas</h1>
+
+        <div id="profile">
+            <i class="fa-regular fa-circle-user"></i>
+            <p>Daniel Arevalo</p>
+        </div>
+    </div>
+
+    <div class="container-table">
+        <form>
+
+            <!-- DATOS USUARIO -->
+            <div class="userData">
+                <h4>Facturación:</h4>
+
+                <div class="form-group">
+                    <div>
+                        <input type="radio" id="facturaFinal" name="datoFactura">
+                        <label for="facturaFinal">Final</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="facturaDato" name="datoFactura">
+                        <label for="facturaDato">Datos</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedulaInput">Cédula:</label>
+                    <input type="text" id="cedulaInput">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombreInput">Nombres:</label>
+                    <input type="text" id="nombreInput">
+                </div>
+
+                <div class="form-group">
+                    <label for="celularInput">Celular:</label>
+                    <input type="text" id="celularInput">
+                </div>
+            </div>
+
+            <!-- PRODUCTO -->
+            <div class="producto">
+                <h3>Producto</h3>
+
+                <div class="prod-group">
+                    <label for="codProd">Código:</label>
+                    <input type="text" id="codProd">
+                </div>
+
+                <div class="prod-group">
+                    <label for="producto">Producto:</label>
+                    <input type="text" id="producto">
+                </div>
+
+                <div class="prod-group">
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio">
+                </div>
+
+                <div class="prod-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad">
+                </div>
+
+                <button type="submit">Registrar</button>
+                <button type="reset">Limpiar</button>
+            </div>
+
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
