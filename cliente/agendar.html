@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--fondo-suave);
+            color: var(--marron-oscuro);
+        }
+
+        /* Banner superior */
+        .Bsuperior {
+            height: 32vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .Bsuperior img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%);
+        }
+
+        .AgCita {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+        }
+
+        .AgCita h1 {
+            color: white;
+            font-size: 2.3rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.6);
+        }
+
+        /* Contenedor formulario */
+        .formulario {
+            max-width: 620px;
+            margin: 45px auto;
+            background: var(--blanco-calido);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 18px var(--sombra-suave);
+        }
+
+        .formulario h2 {
+            text-align: center;
+            color: var(--marron-oscuro);
+            font-weight: 300;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        label {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: block;
+            color: var(--marron-oscuro);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 22px;
+            outline: none;
+            transition: border 0.2s ease;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: var(--dorado);
+        }
+
+        /* Botón */
+        .btn1 {
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            background: var(--dorado);
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--sombra-suave);
+            transition: 0.2s;
+        }
+
+        .btn1:hover {
+            background: #caa776;
+        }
+
+        /* Botón volver */
+        .regresar {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .regresar a {
+            color: var(--marron-oscuro);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .regresar a:hover {
+            text-decoration: underline;
+        }
+        .notificacion {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .notificacion.correcto {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #a5d6a7;
+        }
+
+        .notificacion.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5b7b1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Banner -->
+    <div class="Bsuperior">
+        <img src="https://pbs.twimg.com/media/EB4D6xMXYAEYt1Q.png" alt="Agendar Cita">
+        <div class="AgCita">
+            <h1>Agendar Cita</h1>
+        </div>
+    </div>
+
+    <!-- Formulario -->
+    <div class="formulario">
+        <h2>Reserva tu cita ahora mismo</h2>
+
+        <label for="servicios">Selecciona el servicio que deseas:</label>
+        <select id="servicios" name="servicios">
+            <option value="" disabled selected>Elige una opción...</option>
+            <option value="Masaje">Masaje</option>
+            <option value="Facial">Facial</option>
+            <option value="Manicura">Manicura</option>
+            <option value="Pedicura">Pedicura</option>
+            <option value="Aromaterapia">Aromaterapia</option>
+            <option value="Spa Completo">Spa Completo</option>
+        </select>
+
+        <label for="fecha">Selecciona la fecha:</label>
+        <input type="date" id="fecha" name="fecha">
+
+        <label for="hora">Selecciona la hora:</label>
+        <input type="time" id="hora" name="hora">
+
+        <button class="btn1" onclick="agendar()">Agendar Cita</button>
+
+        <div id="notificacion" class="notificacion"></div>
+
+        <div class="regresar">
+            <a href="clientHome.html">← Volver al inicio</a>
+        </div>
+    </div>
+
+    <script>
+        const notificacionDiv = document.getElementById('notificacion');
+        function mostrarNotificacion(mensaje, tipo) {
+            notificacionDiv.textContent = mensaje;
+            notificacionDiv.className = `notificacion ${tipo}`;
+            notificacionDiv.style.display = 'block';
+            setTimeout(() => {
+                notificacionDiv.style.display = 'none';
+            }, 4000);
+        }
+        function agendar() {
+            const servicio = document.getElementById('servicios').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+
+            if (!servicio || !fecha || !hora) {
+                mostrarNotificacion('Por favor, completa todos los campos.', 'error');
+                return;
+            }
+
+            const citas = JSON.parse(localStorage.getItem('citas')) || [];
+            citas.push({ servicio, fecha, hora });
+            localStorage.setItem('citas', JSON.stringify(citas));
+
+            mostrarNotificacion(`Cita agendada con éxito para ${fecha} a las ${hora} (${servicio}).`, 'correcto');
+
+             setTimeout(() => {
+                window.location.href = "cliente-historial.html";
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>
