@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de citas</title>
+
+    <style>
+        :root {
+            --primary-dark: #5a3e85;
+            --dorado: #d4b27b;
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --text: #333;
+            --white: #ffffff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7ff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            font-weight: 400;
+            font-size: 2rem;
+        }
+        .Tcitas {
+            background: var(--white);
+            padding: 20px;
+            margin: 15px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px var(--shadow-light);
+            border-left: 6px solid var(--dorado);
+            animation: fadeIn 0.4s ease;
+        }
+        .Tcitas p {
+            margin: 6px 0;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .btnregresar {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 0;
+            padding: 14px 35px;
+            background: var(--primary-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 6px 15px var(--shadow-light);
+            transition: 0.2s ease;
+        }
+        .btnregresar:hover {
+            background: #472f6b;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nocitas {
+            text-align: center;
+            color: #777;
+            margin-top: 30px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Historial de citas</h1>
+    <div id="lcitas"></div>
+    <a class="btnregresar" href="clientHome.html">Volver al inicio</a>
+
+    <script>
+        function cargarCitas() {
+            const citas = JSON.parse(localStorage.getItem('citas')) || [];
+            const cont = document.getElementById('lcitas');
+
+            if (citas.length === 0) {
+                cont.innerHTML = `<p class="nocitas">No hay citas registradas.</p>`;
+                return;
+            }
+
+            citas.forEach(cita => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'Tcitas';
+
+                const servicio = document.createElement('p');
+                servicio.textContent = `Servicio: ${cita.servicio}`;
+                tarjeta.appendChild(servicio);
+
+                const fecha = document.createElement('p');
+                fecha.textContent = `Fecha: ${cita.fecha}`;
+                tarjeta.appendChild(fecha);
+
+                const hora = document.createElement('p');
+                hora.textContent = `Hora: ${cita.hora}`;
+                tarjeta.appendChild(hora);
+                cont.appendChild(tarjeta);
+            });
+        }
+
+        cargarCitas();
+    </script>
+
+</body>
+</html>

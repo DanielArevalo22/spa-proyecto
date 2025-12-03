@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+
+    <style>
+        :root {
+            --primary-dark: #5a3e85;
+            --dorado: #d4b27b;
+            --gris-texto: #555;
+            --shadow-light: rgba(0,0,0,0.15);
+            --fondo-suave: #f7f7ff;
+        }
+
+        body {
+            background: var(--fondo-suave);
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .Bsuperior {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .Bsuperior img {
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+        }
+        .Bsuperior h1 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            font-weight: 400;
+        }
+        .Cproductos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            padding: 10px;
+        }
+        .Tproducto {
+            background: white;
+            padding: 18px;
+            border-radius: 18px;
+            box-shadow: 0 6px 16px var(--shadow-light);
+            text-align: center;
+            transition: transform .2s ease;
+            animation: fadeIn .4s ease;
+        }
+        .Tproducto:hover {
+            transform: translateY(-4px);
+        }
+        .Tproducto img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+        .Tproducto h3 {
+            margin: 12px 0 5px;
+            color: var(--primary-dark);
+        }
+        .Tproducto p {
+            color: var(--gris-texto);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .precio {
+            font-weight: bold;
+            color: var(--dorado);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        .btncomprar {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--dorado);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px var(--shadow-light);
+            transition: background .2s;
+        }
+        .btncomprar:hover {
+            background: #c9a575;
+        }
+        .btnregresar {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 12px 30px;
+            background: var(--primary-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px var(--shadow-light);
+        }
+        .btnregresar:hover {
+            background: #472f6b;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="Bsuperior">
+        <img src="https://www.shutterstock.com/image-vector/composition-aroma-lamp-scented-candle-600nw-2204211871.jpg" alt="Icono de productos">
+        <h1>Productos en Stock</h1>
+    </div>
+
+    <div class="Cproductos">
+
+        <div class="Tproducto">
+            <img src="https://www.azulinabodyface.com/wp-content/uploads/2023/12/20241209_220601-scaled.jpg" alt="Velas aromáticas">
+            <h3>Velas aromáticas</h3>
+            <p>Perfectos aromas para relajarse</p>
+            <p class="precio">$13.50</p>
+            <a href="#" class="btncomprar">Comprar</a>
+        </div>
+
+        <div class="Tproducto">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCye8oP31wATf_gR6UmuRDPi4eXSgQtUoWuQ&s" alt="Mascarillas faciales">
+            <h3>Mascarillas faciales</h3>
+            <p>Mascarillas con nutrientes naturales para la piel</p>
+            <p class="precio">$10.00</p>
+            <a href="#" class="btncomprar">Comprar</a>
+        </div>
+
+        <div class="Tproducto">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUFXdDPwtd4ZBz-zfVIuzD3NAE3p9NViufVA&s" alt="Aceites para masajes">
+            <h3>Aceites esenciales</h3>
+            <p>Aceites esenciales para un masaje relajante</p>
+            <p class="precio">$15.00</p>
+            <a href="#" class="btncomprar">Comprar</a>
+        </div>
+
+        <div class="Tproducto">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt4mlN8DwCACdYQnzi1TbtSyaSKYnSdTxKXw&s" alt="Piedras de masaje">
+            <h3>Piedras de masaje</h3>
+            <p>Piedras calientes para terapias de masaje</p>
+            <p class="precio">$20.00</p>
+            <a href="#" class="btncomprar">Comprar</a>
+        </div>
+
+    </div>
+    <a class="btnregresar" href="clientHome.html">Volver al inicio</a>
+
+</body>
+</html>
